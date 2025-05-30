@@ -80,6 +80,11 @@ action_guard_client: *client"""
 
 def generate_lab_config(env_vars):
     """Generate Lab configuration"""
+    lab_url = env_vars.get('LAB_API_URL', 'your_lab_api_url')
+    # Ensure the URL ends with /v1 for OpenAI-compatible API
+    if not lab_url.endswith('/v1'):
+        lab_url = f"{lab_url}/v1"
+    
     config = f"""# config_lab_ollama.yaml - Lab Ollama API Configuration
 # Generated from environment variables
 
@@ -91,8 +96,14 @@ model_config: &client
   config:
     model: {env_vars.get('LAB_MODEL_NAME', 'your_lab_model')}
     api_key: "{env_vars.get('LAB_API_KEY', 'none')}"
-    base_url: "{env_vars.get('LAB_API_URL', 'your_lab_api_url')}/v1"
+    base_url: "{lab_url}"
     max_retries: 10
+    model_info:
+      vision: false
+      function_calling: true
+      json_output: true
+      family: "gemma"
+      structured_output: true
 
 ##########################
 # Clients for each agent #
@@ -122,6 +133,12 @@ model_config: &client
     api_key: ollama
     base_url: {env_vars.get('OLLAMA_URL', 'http://localhost:11434')}/v1
     max_retries: 10
+    model_info:
+      vision: false
+      function_calling: true
+      json_output: true
+      family: "llama"
+      structured_output: true
 
 ##########################
 # Clients for each agent #
