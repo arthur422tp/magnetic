@@ -11,7 +11,7 @@
 ```env
 # Lab Configuration
 LAB_MODEL_NAME=gemma3:27b              # 您的模型名稱
-LAB_API_URL=https://dlab1.ngrok.io     # 實驗室 API URL
+LAB_API_URL=your_model     # 實驗室 API URL
 LAB_API_KEY=none                       # API 金鑰 (如果需要)
 ```
 
@@ -30,7 +30,7 @@ python generate_configs.py
 ### A. 當前實驗室配置 (Ollama 格式)
 ```env
 LAB_MODEL_NAME=gemma3:27b
-LAB_API_URL=https://dlab1.ngrok.io
+LAB_API_URL=your_model
 LAB_API_KEY=none
 ```
 
@@ -98,7 +98,7 @@ telnet 192.168.1.100 8000
 ### 2. 測試 API (使用當前設置)
 ```bash
 # 測試 Ollama 格式 API
-curl -X POST "https://dlab1.ngrok.io/v1/chat/completions" \
+curl -X POST "your_model/v1/chat/completions" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "gemma3:27b",
@@ -185,7 +185,7 @@ python generate_configs.py
 type config_lab_ollama.yaml
 
 # 測試 API 端點
-curl -X GET "https://dlab1.ngrok.io/v1/models"
+curl -X GET "your_model/v1/models"
 ```
 
 ### 模型相關
@@ -229,7 +229,7 @@ copy .env .env.prod
 
 | 部署方式 | URL 格式 | API 金鑰 | 性能 | 設置難度 |
 |----------|----------|----------|------|----------|
-| **當前 (Ollama)** | `https://dlab1.ngrok.io` | `none` | ⭐⭐⭐⭐ | ⭐ |
+| **當前 (Ollama)** | `your_model` | `none` | ⭐⭐⭐⭐ | ⭐ |
 | **vLLM** | `http://IP:8000` | `none` | ⭐⭐⭐⭐⭐ | ⭐⭐ |
 | **TGI** | `http://IP:3000` | `none` | ⭐⭐⭐⭐ | ⭐⭐ |
 | **FastChat** | `http://IP:8000` | `none` | ⭐⭐⭐ | ⭐⭐⭐ |

@@ -51,7 +51,7 @@ OPENAI_MODEL=gpt-4o-mini
 
 # Lab Configuration  
 LAB_MODEL_NAME=gemma3:27b
-LAB_API_URL=https://dlab1.ngrok.io
+LAB_API_URL=your_model
 LAB_API_KEY=none
 
 # Ollama Configuration
@@ -144,7 +144,7 @@ notepad .env
 ### Development
 ```env
 OPENAI_MODEL=gpt-4o-mini
-LAB_API_URL=https://dlab1.ngrok.io
+LAB_API_URL=your_model
 ```
 
 ### Production
